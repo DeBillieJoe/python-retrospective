@@ -6,7 +6,7 @@ SIGNS = {1: ("Козирог", 19), 2: ("Водолей", 18), 3: ("Риби", 2
 
 
 def what_is_my_sign(day, month):
-    """ According to the day and month returns horoscope sign. """
+    """Return zodiacal sign according to the day and month."""
 
     if day <= SIGNS[month][1]:
         return SIGNS[month][0]
