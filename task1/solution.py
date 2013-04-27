@@ -11,4 +11,4 @@ def what_is_my_sign(day, month):
     if day <= SIGNS[month][1]:
         return SIGNS[month][0]
     else:
-        return SIGNS[(month+1)%12][0]
+        return SIGNS[(month+1) % 12][0]
