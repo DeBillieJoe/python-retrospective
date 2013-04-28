@@ -1,3 +1,6 @@
+from collections import OrderedDict
+
+
 def groupby(func, seq):
     """
     Return dictionary of grouped items.
@@ -43,3 +46,25 @@ def iterate(func):
     while True:
         yield current_composition
         current_composition = compose(func, current_composition)
+
+
+def cache(func, cache_size):
+    """
+    Return a function that caches the last
+    `cache_size` results of `func`.
+    """
+    if cache_size <= 0:
+        return func
+
+    cache_store = OrderedDict()
+
+    def cached_func(*args):
+        if args not in cache_store:
+            if len(cache_store) >= cache_size:
+                cache_store.popitem(False)
+
+            cache_store[args] = func(*args)
+
+        return cache_store[args]
+
+    return cached_func
